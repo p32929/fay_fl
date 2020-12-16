@@ -1,17 +1,39 @@
 import 'package:fayaz/models/Models.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 class States extends StatesRebuilder {
-  List<MeditationData> meditationData = [];
-  List<JournalData> journalData = [];
+  String route = "/";
+  int counter = 0;
+  List<MeditationData> meditationDataList = [];
+  List<JournalData> journalDataList = [];
 
-  setMeditationDataList(List<MeditationData> meditationData) {
-    //
+  void setRoute(String route) {
+    this.route = route;
+    rebuildStates();
   }
 
-  setJournalDataList(List<JournalData> journalData) {
-    //
+  void increase() {
+    this.counter++;
+    rebuildStates();
+  }
+
+  setMeditationDataList(List<MeditationData> meditationDataList) {
+    this.meditationDataList = meditationDataList;
+    rebuildStates();
+  }
+
+  addMeditationDataToList(MeditationData meditationData) {
+    this.meditationDataList.add(meditationData);
+    rebuildStates();
+  }
+
+  setJournalDataList(List<JournalData> journalDataList) {
+    this.journalDataList = journalDataList;
+    rebuildStates();
+  }
+
+  addJournalDataToList(JournalData journalData) {
+    rebuildStates();
   }
 }
 

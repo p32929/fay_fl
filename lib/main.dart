@@ -1,5 +1,7 @@
 import 'package:fayaz/models/StatesHolder.dart';
+import 'package:fayaz/routes/JournalRoute.dart';
 import 'package:fayaz/routes/MainRoute.dart';
+import 'package:fayaz/routes/MeditationRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
@@ -13,7 +15,12 @@ class StartingPoint extends StatelessWidget {
     return StateBuilder(
       models: [StatesHolder.states],
       builder: (context, _) => MaterialApp(
-        home: MainRoute.getLayout(),
+        initialRoute: "/",
+        routes: {
+          '/': (context) => MainRoute.getLayout(context: context),
+          '/m': (context) => MeditationRoute.getLayout(context: context),
+          '/j': (context) => JournalRoute.getLayout(context: context),
+        },
       ),
     );
   }
