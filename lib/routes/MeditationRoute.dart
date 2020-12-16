@@ -43,7 +43,7 @@ class MeditationRoute {
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {
-            //
+            StatesHolder.states.deleteMeditationFromList(index);
           }),
     );
   }

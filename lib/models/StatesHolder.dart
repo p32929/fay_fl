@@ -27,12 +27,22 @@ class States extends StatesRebuilder {
     rebuildStates();
   }
 
+  deleteMeditationFromList(int index) {
+    this.meditationDataList.removeAt(index);
+    rebuildStates();
+  }
+
   setJournalDataList(List<JournalData> journalDataList) {
     this.journalDataList = journalDataList;
     rebuildStates();
   }
 
   addJournalDataToList(JournalData journalData) {
+    rebuildStates();
+  }
+
+  deleteJournalFromList(int index) {
+    this.journalDataList.removeAt(index);
     rebuildStates();
   }
 }
