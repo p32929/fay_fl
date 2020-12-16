@@ -25,7 +25,7 @@ class MeditationRoute {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           StatesHolder.states.addMeditationDataToList(
-              MeditationData("HAHAHA ${count++}", false));
+              MeditationData("HAHAHA ${count++}", count % 2 == 0));
         },
         child: Icon(Icons.add),
       ),
@@ -39,7 +39,7 @@ class MeditationRoute {
       key: Key(index.toString()),
       title: Text(item.path),
       subtitle: Text(item.path),
-      leading: Icon(Icons.play_arrow),
+      leading: Icon(item.isPlaying ? Icons.play_arrow : Icons.stop),
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {
