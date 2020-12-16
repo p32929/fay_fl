@@ -33,10 +33,12 @@ class MeditationRoute {
   }
 
   static _getItemLayout(int index) {
+    MeditationData item = StatesHolder.states.meditationDataList[index];
+
     return ListTile(
       key: Key(index.toString()),
-      title: Text("Title"),
-      subtitle: Text("Subtitle"),
+      title: Text(item.path),
+      subtitle: Text(item.path),
       leading: Icon(Icons.play_arrow),
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
