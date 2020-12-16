@@ -42,14 +42,17 @@ class MeditationRoute {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          List<File> files = await FilePicker.getMultiFile(
-            type: FileType.audio,
-          );
-
-          StatesHolder.states.setMeditationDataList(files.map((e) {
-            String path = e.uri.toFilePath();
-            return MeditationData(path, false);
-          }).toList());
+          try {
+            List<File> files = await FilePicker.getMultiFile(
+              type: FileType.audio,
+            );
+            StatesHolder.states.setMeditationDataList(files.map((e) {
+              String path = e.uri.toFilePath();
+              return MeditationData(path, false);
+            }).toList());
+          } catch (e) {
+            //
+          }
         },
         child: Icon(Icons.add),
       ),
