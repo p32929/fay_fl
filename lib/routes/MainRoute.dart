@@ -17,7 +17,6 @@ class MainRoute {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("HAHA ${StatesHolder.states.counter}"),
           Buttons.getBlueButton("Meditation", () {
             //
             GlobalMethods.changeRoute(context, '/m');

@@ -2,20 +2,9 @@ import 'package:fayaz/models/Models.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 class States extends StatesRebuilder {
-  String route = "/";
-  int counter = 0;
   List<MeditationData> meditationDataList = [];
   List<JournalData> journalDataList = [];
-
-  void setRoute(String route) {
-    this.route = route;
-    rebuildStates();
-  }
-
-  void increase() {
-    this.counter++;
-    rebuildStates();
-  }
+  bool isPlayingMeditation = false;
 
   setMeditationDataList(List<MeditationData> meditationDataList) {
     this.meditationDataList = meditationDataList;

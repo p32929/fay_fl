@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:fayaz/models/Models.dart';
 import 'package:fayaz/models/StatesHolder.dart';
 import 'package:fayaz/utils/GlobalVars.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 int count = 0;
@@ -11,7 +14,22 @@ class MeditationRoute {
     return Scaffold(
       appBar: AppBar(
         title: Text("Meditation"),
-        actions: [],
+        actions: [
+          IconButton(
+              icon: Icon(
+                StatesHolder.states.isPlayingMeditation
+                    ? Icons.play_arrow
+                    : Icons.stop,
+              ),
+              onPressed: () {
+                //
+              }),
+          IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                //
+              }),
+        ],
       ),
       body: ReorderableListView(
         children: List<Widget>.generate(
@@ -23,9 +41,15 @@ class MeditationRoute {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          StatesHolder.states.addMeditationDataToList(
-              MeditationData("HAHAHA ${count++}", count % 2 == 0));
+        onPressed: () async {
+          List<File> files = await FilePicker.getMultiFile(
+            type: FileType.audio,
+          );
+
+          StatesHolder.states.setMeditationDataList(files.map((e) {
+            String path = e.uri.toFilePath();
+            return MeditationData(path, false);
+          }).toList());
         },
         child: Icon(Icons.add),
       ),
@@ -34,10 +58,11 @@ class MeditationRoute {
 
   static _getItemLayout(int index) {
     MeditationData item = StatesHolder.states.meditationDataList[index];
+    List<String> splittedParts = item.path.split("/");
 
     return ListTile(
       key: Key(index.toString()),
-      title: Text(item.path),
+      title: Text(splittedParts[splittedParts.length - 1]),
       subtitle: Text(item.path),
       leading: Icon(item.isPlaying ? Icons.play_arrow : Icons.stop),
       trailing: IconButton(
