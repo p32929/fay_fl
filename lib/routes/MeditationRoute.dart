@@ -48,7 +48,7 @@ class MeditationRoute {
             );
             StatesHolder.states.setMeditationDataList(files.map((e) {
               String path = e.uri.toFilePath();
-              return MeditationData(path, false);
+              return MeditationData(path: path);
             }).toList());
           } catch (e) {
             //
