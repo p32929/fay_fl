@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:fayaz/models/Models.dart';
@@ -5,6 +6,7 @@ import 'package:fayaz/models/StatesHolder.dart';
 import 'package:fayaz/utils/GlobalVars.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:prefs/prefs.dart';
 
 int count = 0;
 
@@ -27,7 +29,8 @@ class MeditationRoute {
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-                //
+                Prefs.setString(GlobalVars.meditationJson,
+                    jsonEncode(StatesHolder.states.meditationDataList));
               }),
         ],
       ),

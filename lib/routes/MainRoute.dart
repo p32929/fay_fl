@@ -10,7 +10,7 @@ class MainRoute {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('FAYAZ'),
+        title: Text('Fayaz Bin Salam'),
       ),
       body: Center(
           child: Column(
