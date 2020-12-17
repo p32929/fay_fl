@@ -25,9 +25,32 @@ class JournalRoute {
         itemBuilder: (ctx, index) => _getItemLayout(index),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          GlobalVars.states
-              .addJournalDataToList(JournalData(name: "HAHA", today: "HOHO"));
+        onPressed: () {
+          TextEditingController textEditingController = TextEditingController();
+
+          showDialog(
+              context: context,
+              child: AlertDialog(
+                title: Text("Title"),
+                content: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter task title',
+                  ),
+                  controller: textEditingController,
+                ),
+                actions: [
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("OK")),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Cancel")),
+                ],
+              ));
         },
         child: Icon(Icons.add),
       ),
