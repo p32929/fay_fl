@@ -25,15 +25,20 @@ class GlobalMethods {
     }
   }
 
+  static stopAudio() {
+    GlobalVars.states.setCurrentMeditationTrack(-1);
+    GlobalVars.audioPlayer.stop();
+  }
+
   static copyJournalToClipboard() {
     List<JournalData> journalDataList = GlobalVars.states.journalDataList;
     String journalText = "";
     for (int i = 0; i < journalDataList.length; i++) {
       if (journalDataList[i].today.isNotEmpty) {
         journalText +=
-            journalDataList[i].name + ": " + journalDataList[i].today;
+            journalDataList[i].name + ": " + journalDataList[i].today + "\n";
       }
     }
-    Clipboard.setData(new ClipboardData(text: journalText));
+    Clipboard.setData(ClipboardData(text: journalText));
   }
 }

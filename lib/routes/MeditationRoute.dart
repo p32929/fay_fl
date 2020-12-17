@@ -26,10 +26,14 @@ class MeditationRoute {
                         : Icons.play_arrow,
                   ),
                   onPressed: () {
-                    GlobalMethods.playNextAudio();
-                    GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
+                    if (GlobalVars.states.currentMeditationTrack == -1) {
                       GlobalMethods.playNextAudio();
-                    });
+                      GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
+                        GlobalMethods.playNextAudio();
+                      });
+                    } else {
+                      GlobalMethods.stopAudio();
+                    }
                   })
               : Text(""),
           IconButton(
