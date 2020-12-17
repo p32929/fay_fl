@@ -42,8 +42,8 @@ class JournalRoute {
               actions: [
                 FlatButton(
                     onPressed: () {
-                      GlobalVars.states.addJournalDataToList(
-                          JournalData(name: textEditingController.text));
+                      GlobalVars.states
+                          .addJournalDataToList(textEditingController.text);
                       Navigator.pop(context);
                     },
                     child: Text("Add")),
