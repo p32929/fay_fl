@@ -14,6 +14,7 @@ int count = 0;
 class MeditationRoute {
   static getLayout({BuildContext context}) {
     Constants.context = context;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Meditation"),
@@ -26,13 +27,14 @@ class MeditationRoute {
                         : Icons.play_arrow,
                   ),
                   onPressed: () {
+                    GlobalVars.audioPlayer.stop();
                     if (GlobalVars.states.currentMeditationTrack == -1) {
                       GlobalMethods.playNextAudio();
                       GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
                         GlobalMethods.playNextAudio();
                       });
                     } else {
-                      GlobalMethods.stopAudio();
+                      GlobalVars.states.setCurrentMeditationTrack(-1);
                     }
                   })
               : Text(""),
@@ -59,10 +61,13 @@ class MeditationRoute {
             List<File> files = await FilePicker.getMultiFile(
               type: FileType.audio,
             );
-            GlobalVars.states.setMeditationDataList(files.map((e) {
+            List<MeditationData> meditationData = files.map((e) {
               String path = e.uri.toFilePath();
               return MeditationData(path: path);
-            }).toList());
+            }).toList();
+
+            meditationData.sort((a, b) => a.path.compareTo(b.path));
+            GlobalVars.states.setMeditationDataList(meditationData);
           } catch (e) {
             //
           }

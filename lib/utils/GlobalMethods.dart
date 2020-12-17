@@ -25,11 +25,6 @@ class GlobalMethods {
     }
   }
 
-  static stopAudio() {
-    GlobalVars.states.setCurrentMeditationTrack(-1);
-    GlobalVars.audioPlayer.stop();
-  }
-
   static copyJournalToClipboard() {
     List<JournalData> journalDataList = GlobalVars.states.journalDataList;
     String journalText = "";
