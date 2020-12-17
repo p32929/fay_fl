@@ -7,6 +7,11 @@ class StatesManager extends StatesRebuilder {
   List<JournalData> journalDataList = [];
   int currentMeditationTrack = -1;
 
+  setTodayTextFor(int index, String today) {
+    this.journalDataList[index].today = today;
+    rebuildStates();
+  }
+
   setCurrentMeditationTrack(int trackIndex) {
     this.currentMeditationTrack = trackIndex;
     rebuildStates();

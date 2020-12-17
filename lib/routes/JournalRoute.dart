@@ -29,30 +29,31 @@ class JournalRoute {
           TextEditingController textEditingController = TextEditingController();
 
           showDialog(
-              context: context,
-              child: AlertDialog(
-                title: Text("Title"),
-                content: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter task title',
-                  ),
-                  controller: textEditingController,
+            context: context,
+            child: AlertDialog(
+              title: Text("Add new task(s)"),
+              content: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Enter task title',
                 ),
-                actions: [
-                  FlatButton(
-                      onPressed: () {
-                        GlobalVars.states.addJournalDataToList(
-                            JournalData(name: textEditingController.text));
-                        Navigator.pop(context);
-                      },
-                      child: Text("OK")),
-                  FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("Cancel")),
-                ],
-              ));
+                controller: textEditingController,
+              ),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      GlobalVars.states.addJournalDataToList(
+                          JournalData(name: textEditingController.text));
+                      Navigator.pop(context);
+                    },
+                    child: Text("Add")),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Cancel")),
+              ],
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),
@@ -65,6 +66,37 @@ class JournalRoute {
       subtitle: GlobalVars.states.journalDataList[index].today == null
           ? Text("")
           : Text(GlobalVars.states.journalDataList[index].today),
+      onTap: () {
+        TextEditingController textEditingController = TextEditingController();
+
+        showDialog(
+          context: Constants.context,
+          child: AlertDialog(
+            title: Text(
+                "Today for ${GlobalVars.states.journalDataList[index].name}"),
+            content: TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter task title',
+              ),
+              controller: textEditingController,
+            ),
+            actions: [
+              FlatButton(
+                  onPressed: () {
+                    GlobalVars.states
+                        .setTodayTextFor(index, textEditingController.text);
+                    Navigator.pop(Constants.context);
+                  },
+                  child: Text("OK")),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(Constants.context);
+                  },
+                  child: Text("Cancel")),
+            ],
+          ),
+        );
+      },
       leading: Icon(Icons.sticky_note_2),
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
