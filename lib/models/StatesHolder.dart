@@ -4,7 +4,12 @@ import 'package:states_rebuilder/states_rebuilder.dart';
 class States extends StatesRebuilder {
   List<MeditationData> meditationDataList = [];
   List<JournalData> journalDataList = [];
-  bool isPlayingMeditation = false;
+  int currentMeditationTrack = -1;
+
+  setCurrentMeditationTrack(int trackIndex) {
+    this.currentMeditationTrack = trackIndex;
+    rebuildStates();
+  }
 
   setMeditationDataList(List<MeditationData> meditationDataList) {
     this.meditationDataList = meditationDataList;

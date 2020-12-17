@@ -17,15 +17,17 @@ class MeditationRoute {
       appBar: AppBar(
         title: Text("Meditation"),
         actions: [
-          IconButton(
-              icon: Icon(
-                StatesHolder.states.isPlayingMeditation
-                    ? Icons.play_arrow
-                    : Icons.stop,
-              ),
-              onPressed: () {
-                //
-              }),
+          StatesHolder.states.meditationDataList.length > 0
+              ? IconButton(
+                  icon: Icon(
+                    StatesHolder.states.currentMeditationTrack > -1
+                        ? Icons.stop
+                        : Icons.play_arrow,
+                  ),
+                  onPressed: () {
+                    //
+                  })
+              : Text(""),
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
