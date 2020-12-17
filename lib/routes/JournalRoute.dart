@@ -33,6 +33,7 @@ class JournalRoute {
             child: AlertDialog(
               title: Text("Add new task(s)"),
               content: TextField(
+                autofocus: true,
                 decoration: InputDecoration(
                   hintText: 'Enter task title',
                 ),
@@ -75,6 +76,7 @@ class JournalRoute {
             title: Text(
                 "Today for ${GlobalVars.states.journalDataList[index].name}"),
             content: TextField(
+              autofocus: true,
               decoration: InputDecoration(
                 hintText: 'Enter task title',
               ),
@@ -89,10 +91,11 @@ class JournalRoute {
                   },
                   child: Text("OK")),
               FlatButton(
-                  onPressed: () {
-                    Navigator.pop(Constants.context);
-                  },
-                  child: Text("Cancel")),
+                onPressed: () {
+                  Navigator.pop(Constants.context);
+                },
+                child: Text("Cancel"),
+              ),
             ],
           ),
         );
