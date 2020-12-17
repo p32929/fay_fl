@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/utils/Constants.dart';
+import 'package:fayaz/utils/GlobalMethods.dart';
 import 'package:flutter/material.dart';
 import 'package:prefs/prefs.dart';
 
@@ -11,6 +12,11 @@ class JournalRoute {
       appBar: AppBar(
         title: Text("Journal"),
         actions: [
+          IconButton(
+              icon: Icon(Icons.copy),
+              onPressed: () {
+                GlobalMethods.copyJournalToClipboard();
+              }),
           IconButton(
               icon: Icon(Icons.auto_fix_high),
               onPressed: () {
