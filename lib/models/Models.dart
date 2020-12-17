@@ -42,6 +42,6 @@ class JournalData {
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "today": today,
+        // "today": today,
       };
 }
