@@ -73,18 +73,20 @@ class MeditationRoute {
     MeditationData item = GlobalVars.states.meditationDataList[index];
     List<String> splittedParts = item.path.split("/");
 
-    return ListTile(
+    return Card(
       key: Key(index.toString()),
-      title: Text(splittedParts[splittedParts.length - 1]),
-      subtitle: Text(item.path),
-      leading: Icon(GlobalVars.states.currentMeditationTrack == index
-          ? Icons.stop
-          : Icons.play_arrow),
-      trailing: IconButton(
-          icon: Icon(Icons.delete_forever),
-          onPressed: () {
-            GlobalVars.states.deleteMeditationFromList(index);
-          }),
+      child: ListTile(
+        title: Text(splittedParts[splittedParts.length - 1]),
+        subtitle: Text(item.path),
+        leading: Icon(GlobalVars.states.currentMeditationTrack == index
+            ? Icons.stop
+            : Icons.play_arrow),
+        trailing: IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () {
+              GlobalVars.states.deleteMeditationFromList(index);
+            }),
+      ),
     );
   }
 }

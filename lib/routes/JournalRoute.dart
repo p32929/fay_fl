@@ -84,51 +84,53 @@ class JournalRoute {
   }
 
   static _getItemLayout(int index) {
-    return ListTile(
+    return Card(
       key: Key(index.toString()),
-      title: Text(GlobalVars.states.journalDataList[index].name.toString()),
-      subtitle: GlobalVars.states.journalDataList[index].today == null
-          ? Text("")
-          : Text(GlobalVars.states.journalDataList[index].today),
-      onTap: () {
-        TextEditingController textEditingController = TextEditingController();
+      child: ListTile(
+        title: Text(GlobalVars.states.journalDataList[index].name.toString()),
+        subtitle: GlobalVars.states.journalDataList[index].today == null
+            ? Text("")
+            : Text(GlobalVars.states.journalDataList[index].today),
+        onTap: () {
+          TextEditingController textEditingController = TextEditingController();
 
-        showDialog(
-          context: Constants.context,
-          child: AlertDialog(
-            title: Text(
-                "Today for ${GlobalVars.states.journalDataList[index].name}"),
-            content: TextField(
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: 'Enter task title',
+          showDialog(
+            context: Constants.context,
+            child: AlertDialog(
+              title: Text(
+                  "Today for ${GlobalVars.states.journalDataList[index].name}"),
+              content: TextField(
+                autofocus: true,
+                decoration: InputDecoration(
+                  hintText: 'Enter task title',
+                ),
+                controller: textEditingController,
               ),
-              controller: textEditingController,
-            ),
-            actions: [
-              FlatButton(
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      GlobalVars.states
+                          .setTodayTextFor(index, textEditingController.text);
+                      Navigator.pop(Constants.context);
+                    },
+                    child: Text("OK")),
+                FlatButton(
                   onPressed: () {
-                    GlobalVars.states
-                        .setTodayTextFor(index, textEditingController.text);
                     Navigator.pop(Constants.context);
                   },
-                  child: Text("OK")),
-              FlatButton(
-                onPressed: () {
-                  Navigator.pop(Constants.context);
-                },
-                child: Text("Cancel"),
-              ),
-            ],
-          ),
-        );
-      },
-      leading: Icon(Icons.sticky_note_2),
-      trailing: IconButton(
-          icon: Icon(Icons.delete_forever),
-          onPressed: () {
-            GlobalVars.states.deleteJournalFromList(index);
-          }),
+                  child: Text("Cancel"),
+                ),
+              ],
+            ),
+          );
+        },
+        leading: Icon(Icons.sticky_note_2),
+        trailing: IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () {
+              GlobalVars.states.deleteJournalFromList(index);
+            }),
+      ),
     );
   }
 }
