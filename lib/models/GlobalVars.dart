@@ -16,6 +16,15 @@ class StatesManager extends StatesRebuilder {
     rebuildStates();
   }
 
+  reorderJournalData(int oldIndex, int newIndex) {
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
+    final JournalData item = this.journalDataList.removeAt(oldIndex);
+    this.journalDataList.insert(newIndex, item);
+    rebuildStates();
+  }
+
   setTodayTextFor(int index, String today) {
     this.journalDataList[index].today = today;
     rebuildStates();

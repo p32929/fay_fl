@@ -33,9 +33,18 @@ class JournalRoute {
               }),
         ],
       ),
-      body: ListView.builder(
-        itemCount: GlobalVars.states.journalDataList.length,
-        itemBuilder: (ctx, index) => _getItemLayout(index),
+      // body: ListView.builder(
+      //   itemCount: GlobalVars.states.journalDataList.length,
+      //   itemBuilder: (ctx, index) => _getItemLayout(index),
+      // ),
+      body: ReorderableListView(
+        onReorder: (int o, int n) {
+          GlobalVars.states.reorderJournalData(o, n);
+        },
+        children: List<Widget>.generate(
+          GlobalVars.states.journalDataList.length,
+          (index) => _getItemLayout(index),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -76,6 +85,7 @@ class JournalRoute {
 
   static _getItemLayout(int index) {
     return ListTile(
+      key: Key(index.toString()),
       title: Text(GlobalVars.states.journalDataList[index].name.toString()),
       subtitle: GlobalVars.states.journalDataList[index].today == null
           ? Text("")
