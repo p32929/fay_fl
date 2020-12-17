@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:fayaz/models/Models.dart';
-import 'package:fayaz/models/StatesHolder.dart';
-import 'package:fayaz/utils/GlobalVars.dart';
+import 'package:fayaz/models/GlobalVars.dart';
+import 'package:fayaz/utils/Constants.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:prefs/prefs.dart';
@@ -12,15 +12,15 @@ int count = 0;
 
 class MeditationRoute {
   static getLayout({BuildContext context}) {
-    GlobalVars.context = context;
+    Constants.context = context;
     return Scaffold(
       appBar: AppBar(
         title: Text("Meditation"),
         actions: [
-          StatesHolder.states.meditationDataList.length > 0
+          GlobalVars.states.meditationDataList.length > 0
               ? IconButton(
                   icon: Icon(
-                    StatesHolder.states.currentMeditationTrack > -1
+                    GlobalVars.states.currentMeditationTrack > -1
                         ? Icons.stop
                         : Icons.play_arrow,
                   ),
@@ -31,15 +31,14 @@ class MeditationRoute {
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-                String json =
-                    jsonEncode(StatesHolder.states.meditationDataList);
-                Prefs.setString(GlobalVars.meditationJson, json);
+                String json = jsonEncode(GlobalVars.states.meditationDataList);
+                Prefs.setString(Constants.meditationJson, json);
               }),
         ],
       ),
       body: ReorderableListView(
         children: List<Widget>.generate(
-          StatesHolder.states.meditationDataList.length,
+          GlobalVars.states.meditationDataList.length,
           (index) => _getItemLayout(index),
         ),
         onReorder: (o, n) {
@@ -52,7 +51,7 @@ class MeditationRoute {
             List<File> files = await FilePicker.getMultiFile(
               type: FileType.audio,
             );
-            StatesHolder.states.setMeditationDataList(files.map((e) {
+            GlobalVars.states.setMeditationDataList(files.map((e) {
               String path = e.uri.toFilePath();
               return MeditationData(path: path);
             }).toList());
@@ -66,7 +65,7 @@ class MeditationRoute {
   }
 
   static _getItemLayout(int index) {
-    MeditationData item = StatesHolder.states.meditationDataList[index];
+    MeditationData item = GlobalVars.states.meditationDataList[index];
     List<String> splittedParts = item.path.split("/");
 
     return ListTile(
@@ -77,7 +76,7 @@ class MeditationRoute {
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {
-            StatesHolder.states.deleteMeditationFromList(index);
+            GlobalVars.states.deleteMeditationFromList(index);
           }),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:fayaz/models/Models.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
-class States extends StatesRebuilder {
+class StatesManager extends StatesRebuilder {
   List<MeditationData> meditationDataList = [];
   List<JournalData> journalDataList = [];
   int currentMeditationTrack = -1;
@@ -42,6 +42,6 @@ class States extends StatesRebuilder {
   }
 }
 
-class StatesHolder {
-  static States states = States();
+class GlobalVars {
+  static StatesManager states = StatesManager();
 }

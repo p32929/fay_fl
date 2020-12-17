@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:fayaz/models/Models.dart';
-import 'package:fayaz/models/StatesHolder.dart';
-import 'package:fayaz/utils/GlobalVars.dart';
+import 'package:fayaz/models/GlobalVars.dart';
+import 'package:fayaz/utils/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:prefs/prefs.dart';
 
 class JournalRoute {
   static getLayout({BuildContext context}) {
-    GlobalVars.context = context;
+    Constants.context = context;
     return Scaffold(
       appBar: AppBar(
         title: Text("Journal"),
@@ -15,18 +15,18 @@ class JournalRoute {
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-                String json = jsonEncode(StatesHolder.states.journalDataList);
-                Prefs.setString(GlobalVars.journalJson, json);
+                String json = jsonEncode(GlobalVars.states.journalDataList);
+                Prefs.setString(Constants.journalJson, json);
               }),
         ],
       ),
       body: ListView.builder(
-        itemCount: StatesHolder.states.journalDataList.length,
+        itemCount: GlobalVars.states.journalDataList.length,
         itemBuilder: (ctx, index) => _getItemLayout(index),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          StatesHolder.states
+          GlobalVars.states
               .addJournalDataToList(JournalData(name: "HAHA", today: "HOHO"));
         },
         child: Icon(Icons.add),
@@ -42,7 +42,7 @@ class JournalRoute {
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {
-            StatesHolder.states.deleteJournalFromList(index);
+            GlobalVars.states.deleteJournalFromList(index);
           }),
     );
   }

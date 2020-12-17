@@ -1,12 +1,12 @@
-import 'package:fayaz/models/StatesHolder.dart';
+import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/utils/GlobalMethods.dart';
-import 'package:fayaz/utils/GlobalVars.dart';
+import 'package:fayaz/utils/Constants.dart';
 import 'package:fayaz/widgets/Buttons.dart';
 import 'package:flutter/material.dart';
 
 class MainRoute {
   static getLayout({BuildContext context}) {
-    GlobalVars.context = context;
+    Constants.context = context;
 
     return Scaffold(
       appBar: AppBar(
