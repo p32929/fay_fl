@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:fayaz/models/Models.dart';
 import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/utils/Constants.dart';
+import 'package:fayaz/utils/GlobalMethods.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:prefs/prefs.dart';
@@ -25,7 +26,10 @@ class MeditationRoute {
                         : Icons.play_arrow,
                   ),
                   onPressed: () {
-                    //
+                    GlobalMethods.playNextAudio();
+                    GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
+                      GlobalMethods.playNextAudio();
+                    });
                   })
               : Text(""),
           IconButton(

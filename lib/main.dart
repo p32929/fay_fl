@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:fayaz/models/Models.dart';
 import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/routes/JournalRoute.dart';
@@ -13,6 +14,7 @@ import 'package:states_rebuilder/states_rebuilder.dart';
 void main() {
   runApp(StartingPoint());
 
+  AudioPlayer.logEnabled = false;
   Prefs.init().then((value) {
     String medJsonStr = Prefs.getString(Constants.meditationJson);
     List<MeditationData> medItemsList = List<MeditationData>.from(

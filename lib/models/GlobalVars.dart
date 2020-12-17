@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:fayaz/models/Models.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
@@ -44,4 +45,5 @@ class StatesManager extends StatesRebuilder {
 
 class GlobalVars {
   static StatesManager states = StatesManager();
+  static AudioPlayer audioPlayer = new AudioPlayer();
 }
