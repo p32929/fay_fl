@@ -21,7 +21,7 @@ class GlobalMethods {
         stayAwake: true,
       );
     } catch (e) {
-      //
+      GlobalVars.states.setCurrentMeditationTrack(-1);
     }
   }
 

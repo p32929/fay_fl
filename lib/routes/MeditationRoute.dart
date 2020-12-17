@@ -28,7 +28,9 @@ class MeditationRoute {
                   ),
                   onPressed: () {
                     GlobalVars.audioPlayer.stop();
-                    if (GlobalVars.states.currentMeditationTrack == -1) {
+                    int currentMeditationTrack =
+                        GlobalVars.states.currentMeditationTrack;
+                    if (currentMeditationTrack == -1) {
                       GlobalMethods.playNextAudio();
                       GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
                         GlobalMethods.playNextAudio();
