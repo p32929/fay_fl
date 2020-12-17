@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fayaz/models/Models.dart';
 import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/utils/Constants.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,14 @@ class JournalRoute {
       appBar: AppBar(
         title: Text("Journal"),
         actions: [
+          IconButton(
+              icon: Icon(Icons.auto_fix_high),
+              onPressed: () {
+                GlobalVars.states.journalDataList
+                    .sort((a, b) => a.name.compareTo(b.name));
+                GlobalVars.states
+                    .setJournalDataList(GlobalVars.states.journalDataList);
+              }),
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
