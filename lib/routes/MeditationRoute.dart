@@ -72,7 +72,9 @@ class MeditationRoute {
       key: Key(index.toString()),
       title: Text(splittedParts[splittedParts.length - 1]),
       subtitle: Text(item.path),
-      leading: Icon(item.isPlaying ? Icons.play_arrow : Icons.stop),
+      leading: Icon(GlobalVars.states.currentMeditationTrack == index
+          ? Icons.stop
+          : Icons.play_arrow),
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {

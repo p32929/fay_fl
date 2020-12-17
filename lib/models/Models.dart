@@ -3,11 +3,9 @@ import 'dart:convert';
 class MeditationData {
   MeditationData({
     this.path,
-    this.isPlaying,
   });
 
   String path;
-  bool isPlaying;
 
   factory MeditationData.fromRawJson(String str) =>
       MeditationData.fromJson(json.decode(str));
@@ -16,12 +14,10 @@ class MeditationData {
 
   factory MeditationData.fromJson(Map<String, dynamic> json) => MeditationData(
         path: json["path"],
-        isPlaying: json["isPlaying"],
       );
 
   Map<String, dynamic> toJson() => {
         "path": path,
-        "isPlaying": isPlaying,
       };
 }
 
