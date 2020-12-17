@@ -27,17 +27,7 @@ class MeditationRoute {
                         : Icons.play_arrow,
                   ),
                   onPressed: () {
-                    GlobalVars.audioPlayer.stop();
-                    int currentMeditationTrack =
-                        GlobalVars.states.currentMeditationTrack;
-                    if (currentMeditationTrack == -1) {
-                      GlobalMethods.playNextAudio();
-                      GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
-                        GlobalMethods.playNextAudio();
-                      });
-                    } else {
-                      GlobalVars.states.setCurrentMeditationTrack(-1);
-                    }
+                    GlobalMethods.playAudio();
                   })
               : Text(""),
           IconButton(

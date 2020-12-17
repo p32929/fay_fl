@@ -9,19 +9,34 @@ class GlobalMethods {
     Navigator.pushNamed(context, route);
   }
 
-  static playNextAudio() {
-    try {
-      GlobalVars.states.setCurrentMeditationTrack(
-          GlobalVars.states.currentMeditationTrack + 1);
+  static playAudio({int index}) {
+    if (GlobalVars.states.currentMeditationTrack > -1) {
+      GlobalVars.audioPlayer.stop().then((value) {
+        GlobalVars.states.setCurrentMeditationTrack(-1);
+      });
+    } else {
+      GlobalVars.audioPlayer
+          .play(GlobalVars.states.meditationDataList[0].path)
+          .then((value) {
+        GlobalVars.states.setCurrentMeditationTrack(0);
+      });
 
-      GlobalVars.audioPlayer.play(
-        GlobalVars.states
-            .meditationDataList[GlobalVars.states.currentMeditationTrack].path,
-        isLocal: true,
-        stayAwake: true,
-      );
-    } catch (e) {
-      GlobalVars.states.setCurrentMeditationTrack(-1);
+      GlobalVars.audioPlayer.onPlayerCompletion.listen((event) {
+        print("PC - ${GlobalVars.states.currentMeditationTrack}");
+        int next = GlobalVars.states.currentMeditationTrack + 1;
+        if (next >= GlobalVars.states.meditationDataList.length) {
+          GlobalVars.audioPlayer.stop().then((value) {
+            GlobalVars.states.setCurrentMeditationTrack(-1);
+          });
+        } else {
+          print("PC - Next - $next");
+          GlobalVars.audioPlayer
+              .play(GlobalVars.states.meditationDataList[next].path)
+              .then((value) {
+            GlobalVars.states.setCurrentMeditationTrack(next);
+          });
+        }
+      });
     }
   }
 
