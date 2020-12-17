@@ -75,17 +75,20 @@ class MeditationRoute {
 
     return Card(
       key: Key(index.toString()),
-      child: ListTile(
-        title: Text(splittedParts[splittedParts.length - 1]),
-        subtitle: Text(item.path),
-        leading: Icon(GlobalVars.states.currentMeditationTrack == index
-            ? Icons.stop
-            : Icons.play_arrow),
-        trailing: IconButton(
-            icon: Icon(Icons.delete_forever),
-            onPressed: () {
-              GlobalVars.states.deleteMeditationFromList(index);
-            }),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: ListTile(
+          title: Text(splittedParts[splittedParts.length - 1]),
+          subtitle: Text(item.path),
+          leading: Icon(GlobalVars.states.currentMeditationTrack == index
+              ? Icons.stop
+              : Icons.play_arrow),
+          trailing: IconButton(
+              icon: Icon(Icons.delete_forever),
+              onPressed: () {
+                GlobalVars.states.deleteMeditationFromList(index);
+              }),
+        ),
       ),
     );
   }
