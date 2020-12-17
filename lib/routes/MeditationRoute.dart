@@ -51,8 +51,8 @@ class MeditationRoute {
           GlobalVars.states.meditationDataList.length,
           (index) => _getItemLayout(index),
         ),
-        onReorder: (o, n) {
-          //
+        onReorder: (int o, int n) {
+          GlobalVars.states.reorderMeditationData(o, n);
         },
       ),
       floatingActionButton: FloatingActionButton(
