@@ -29,8 +29,9 @@ class MeditationRoute {
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-                Prefs.setString(GlobalVars.meditationJson,
-                    jsonEncode(StatesHolder.states.meditationDataList));
+                String json =
+                    jsonEncode(StatesHolder.states.meditationDataList);
+                Prefs.setString(GlobalVars.meditationJson, json);
               }),
         ],
       ),

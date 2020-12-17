@@ -20,9 +20,9 @@ void main() {
     StatesHolder.states.setMeditationDataList(medItemsList);
 
     String journalJsonStr = Prefs.getString(GlobalVars.journalJson);
-    List<MeditationData> journalItemsList = List<MeditationData>.from(
-        jsonDecode(journalJsonStr).map((i) => MeditationData.fromJson(i)));
-    StatesHolder.states.setMeditationDataList(journalItemsList);
+    List<JournalData> journalItemsList = List<JournalData>.from(
+        jsonDecode(journalJsonStr).map((i) => JournalData.fromJson(i)));
+    StatesHolder.states.setJournalDataList(journalItemsList);
   });
 }
 

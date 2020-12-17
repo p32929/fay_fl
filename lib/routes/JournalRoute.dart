@@ -15,8 +15,8 @@ class JournalRoute {
           IconButton(
               icon: Icon(Icons.save),
               onPressed: () {
-                Prefs.setString(GlobalVars.journalJson,
-                    jsonEncode(StatesHolder.states.journalDataList));
+                String json = jsonEncode(StatesHolder.states.journalDataList);
+                Prefs.setString(GlobalVars.journalJson, json);
               }),
         ],
       ),
