@@ -27,6 +27,7 @@ class States extends StatesRebuilder {
   }
 
   addJournalDataToList(JournalData journalData) {
+    this.journalDataList.add(journalData);
     rebuildStates();
   }
 
