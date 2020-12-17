@@ -41,6 +41,8 @@ class JournalRoute {
                 actions: [
                   FlatButton(
                       onPressed: () {
+                        GlobalVars.states.addJournalDataToList(
+                            JournalData(name: textEditingController.text));
                         Navigator.pop(context);
                       },
                       child: Text("OK")),
@@ -59,9 +61,11 @@ class JournalRoute {
 
   static _getItemLayout(int index) {
     return ListTile(
-      title: Text('HELLO'),
-      subtitle: Text('HAHAHA'),
-      leading: Icon(Icons.play_arrow),
+      title: Text(GlobalVars.states.journalDataList[index].name.toString()),
+      subtitle: GlobalVars.states.journalDataList[index].today == null
+          ? Text("")
+          : Text(GlobalVars.states.journalDataList[index].today),
+      leading: Icon(Icons.sticky_note_2),
       trailing: IconButton(
           icon: Icon(Icons.delete_forever),
           onPressed: () {
