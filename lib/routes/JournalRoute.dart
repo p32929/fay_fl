@@ -37,7 +37,7 @@ class JournalRoute {
                       GlobalMethods.copyJournalToClipboard();
                       GlobalMethods.showAlertDialog(
                         "Success",
-                        "Journal copied",
+                        "Journal copied to clipboard",
                       );
                     }),
                 IconButton(
