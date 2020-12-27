@@ -19,12 +19,17 @@ class MeditationRoute {
       appBar: AppBar(
         title: GestureDetector(
           child: Text("Meditation"),
-          onTap: () {
-            //
-          },
+          // onTap: () {
+          //   //
+          // },
           onLongPress: () {
             String json = jsonEncode(GlobalVars.states.meditationDataList);
             Prefs.setString(Constants.meditationJson, json);
+
+            GlobalMethods.showAlertDialog(
+              "Success",
+              "JSON saved",
+            );
           },
         ),
         actions: GlobalVars.states.meditationDataList.length > 0

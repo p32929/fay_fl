@@ -14,10 +14,19 @@ class JournalRoute {
           child: Text("Journal"),
           onTap: () {
             GlobalMethods.exportJournalTitles();
+            GlobalMethods.showAlertDialog(
+              "Success",
+              "Journal titles exported into clipboard",
+            );
           },
           onLongPress: () {
             String json = jsonEncode(GlobalVars.states.journalDataList);
             Prefs.setString(Constants.journalJson, json);
+
+            GlobalMethods.showAlertDialog(
+              "Success",
+              "JSON saved",
+            );
           },
         ),
         actions: GlobalVars.states.journalDataList.length > 0
@@ -26,6 +35,10 @@ class JournalRoute {
                     icon: Icon(Icons.copy),
                     onPressed: () {
                       GlobalMethods.copyJournalToClipboard();
+                      GlobalMethods.showAlertDialog(
+                        "Success",
+                        "Journal copied",
+                      );
                     }),
                 IconButton(
                     icon: Icon(Icons.auto_fix_high),

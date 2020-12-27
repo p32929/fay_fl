@@ -1,5 +1,6 @@
 import 'package:fayaz/models/GlobalVars.dart';
 import 'package:fayaz/models/Models.dart';
+import 'package:fayaz/utils/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -64,5 +65,21 @@ class GlobalMethods {
       exportedText += journalDataList[i].name + ", ";
     }
     Clipboard.setData(ClipboardData(text: exportedText));
+  }
+
+  static showAlertDialog(String title, String description) {
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(title),
+      content: Text(description),
+    );
+
+    // show the dialog
+    showDialog(
+      context: Constants.context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
