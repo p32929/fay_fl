@@ -17,7 +17,16 @@ class MeditationRoute {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meditation"),
+        title: GestureDetector(
+          child: Text("Meditation"),
+          onTap: () {
+            //
+          },
+          onLongPress: () {
+            String json = jsonEncode(GlobalVars.states.meditationDataList);
+            Prefs.setString(Constants.meditationJson, json);
+          },
+        ),
         actions: [
           GlobalVars.states.meditationDataList.length > 0
               ? IconButton(
@@ -30,12 +39,6 @@ class MeditationRoute {
                     GlobalMethods.playAudio();
                   })
               : Text(""),
-          IconButton(
-              icon: Icon(Icons.save),
-              onPressed: () {
-                String json = jsonEncode(GlobalVars.states.meditationDataList);
-                Prefs.setString(Constants.meditationJson, json);
-              }),
         ],
       ),
       body: ReorderableListView(
