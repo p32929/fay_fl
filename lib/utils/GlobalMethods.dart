@@ -44,14 +44,25 @@ class GlobalMethods {
     List<JournalData> journalDataList = GlobalVars.states.journalDataList;
     String journalText = "";
     for (int i = 0; i < journalDataList.length; i++) {
-      // if (journalDataList[i].today != null) {
-      //   journalText +=
-      //       journalDataList[i].name + ": " + journalDataList[i].today + "\n";
-      // }
+      if (journalDataList[i].today != null) {
+        journalText +=
+            journalDataList[i].name + ": " + journalDataList[i].today + "\n";
+      }
 
-      journalText +=
-          journalDataList[i].name + ": " + journalDataList[i]?.today + "\n";
+      journalText += journalDataList[i].name +
+          ": " +
+          (journalDataList[i].today == null ? "" : journalDataList[i].today) +
+          "\n";
     }
     Clipboard.setData(ClipboardData(text: journalText));
+  }
+
+  static exportJournalTitles() {
+    List<JournalData> journalDataList = GlobalVars.states.journalDataList;
+    String exportedText = "";
+    for (int i = 0; i < journalDataList.length; i++) {
+      exportedText += journalDataList[i].name + ", ";
+    }
+    Clipboard.setData(ClipboardData(text: exportedText));
   }
 }

@@ -13,6 +13,11 @@ class JournalRoute {
         title: Text("Journal"),
         actions: [
           IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                GlobalMethods.exportJournalTitles();
+              }),
+          IconButton(
               icon: Icon(Icons.copy),
               onPressed: () {
                 GlobalMethods.copyJournalToClipboard();
