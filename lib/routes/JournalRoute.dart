@@ -20,21 +20,23 @@ class JournalRoute {
             Prefs.setString(Constants.journalJson, json);
           },
         ),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.copy),
-              onPressed: () {
-                GlobalMethods.copyJournalToClipboard();
-              }),
-          IconButton(
-              icon: Icon(Icons.auto_fix_high),
-              onPressed: () {
-                GlobalVars.states.journalDataList
-                    .sort((a, b) => a.name.compareTo(b.name));
-                GlobalVars.states
-                    .setJournalDataList(GlobalVars.states.journalDataList);
-              }),
-        ],
+        actions: GlobalVars.states.journalDataList.length > 0
+            ? [
+                IconButton(
+                    icon: Icon(Icons.copy),
+                    onPressed: () {
+                      GlobalMethods.copyJournalToClipboard();
+                    }),
+                IconButton(
+                    icon: Icon(Icons.auto_fix_high),
+                    onPressed: () {
+                      GlobalVars.states.journalDataList
+                          .sort((a, b) => a.name.compareTo(b.name));
+                      GlobalVars.states.setJournalDataList(
+                          GlobalVars.states.journalDataList);
+                    }),
+              ]
+            : [],
       ),
       // body: ListView.builder(
       //   itemCount: GlobalVars.states.journalDataList.length,

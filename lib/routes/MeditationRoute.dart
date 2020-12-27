@@ -27,19 +27,19 @@ class MeditationRoute {
             Prefs.setString(Constants.meditationJson, json);
           },
         ),
-        actions: [
-          GlobalVars.states.meditationDataList.length > 0
-              ? IconButton(
-                  icon: Icon(
-                    GlobalVars.states.currentMeditationTrack > -1
-                        ? Icons.stop
-                        : Icons.play_arrow,
-                  ),
-                  onPressed: () {
-                    GlobalMethods.playAudio();
-                  })
-              : Text(""),
-        ],
+        actions: GlobalVars.states.meditationDataList.length > 0
+            ? [
+                IconButton(
+                    icon: Icon(
+                      GlobalVars.states.currentMeditationTrack > -1
+                          ? Icons.stop
+                          : Icons.play_arrow,
+                    ),
+                    onPressed: () {
+                      GlobalMethods.playAudio();
+                    }),
+              ]
+            : [],
       ),
       body: ReorderableListView(
         children: List<Widget>.generate(
