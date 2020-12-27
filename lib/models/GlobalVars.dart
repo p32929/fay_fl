@@ -58,7 +58,7 @@ class StatesManager extends StatesRebuilder {
   addJournalDataToList(String data) {
     List<String> journals = data.split(",");
     for (int i = 0; i < journals.length; i++) {
-      if (journals[i].isNotEmpty)
+      if (journals[i].replaceAll(" ", "").isNotEmpty)
         this.journalDataList.add(JournalData(name: journals[i].trim()));
     }
     rebuildStates();
