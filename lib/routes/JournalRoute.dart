@@ -10,13 +10,17 @@ class JournalRoute {
     Constants.context = context;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Journal"),
+        title: GestureDetector(
+          child: Text("Journal"),
+          onTap: () {
+            GlobalMethods.exportJournalTitles();
+          },
+          onLongPress: () {
+            String json = jsonEncode(GlobalVars.states.journalDataList);
+            Prefs.setString(Constants.journalJson, json);
+          },
+        ),
         actions: [
-          IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () {
-                GlobalMethods.exportJournalTitles();
-              }),
           IconButton(
               icon: Icon(Icons.copy),
               onPressed: () {
@@ -29,12 +33,6 @@ class JournalRoute {
                     .sort((a, b) => a.name.compareTo(b.name));
                 GlobalVars.states
                     .setJournalDataList(GlobalVars.states.journalDataList);
-              }),
-          IconButton(
-              icon: Icon(Icons.save),
-              onPressed: () {
-                String json = jsonEncode(GlobalVars.states.journalDataList);
-                Prefs.setString(Constants.journalJson, json);
               }),
         ],
       ),
