@@ -1,16 +1,19 @@
-# fayaz
+# fay_fl
+ A simple app made by me, for me - to help play my meditation audios serially and to help me write my journals easily 
 
-A new Flutter project.
+[![](https://badgen.net/github/release/p32929/fay_fl)]() [![](https://badgen.net/github/release/p32929/fay_fl/stable)]() [![](https://badgen.net/github/tag/p32929/fay_fl)]() [![](https://badgen.net/github/watchers/p32929/fay_fl)]() [![](https://badgen.net/github/checks/p32929/fay_fl)]() [![](https://badgen.net/github/status/p32929/fay_fl)]() [![](https://badgen.net/github/stars/p32929/fay_fl)]() [![](https://badgen.net/github/forks/p32929/fay_fl)]() [![](https://badgen.net/github/issues/p32929/fay_fl)]() [![](https://badgen.net/github/open-issues/p32929/fay_fl)]() [![](https://badgen.net/github/closed-issues/p32929/fay_fl)]() [![](https://badgen.net/github/label-issues/p32929/fay_fl/help-wanted/open)]() [![](https://badgen.net/github/prs/p32929/fay_fl)]() [![](https://badgen.net/github/open-prs/p32929/fay_fl)]() [![](https://badgen.net/github/closed-prs/p32929/fay_fl)]() [![](https://badgen.net/github/merged-prs/p32929/fay_fl)]() [![](https://badgen.net/github/commits/p32929/fay_fl)]() [![](https://badgen.net/github/last-commit/p32929/fay_fl)]() [![](https://badgen.net/github/branches/p32929/fay_fl)]() [![](https://badgen.net/github/releases/p32929/fay_fl)]() [![](https://badgen.net/github/tags/p32929/fay_fl)]() [![](https://badgen.net/github/contributors/p32929/fay_fl)]() [![](https://badgen.net/github/dependents-pkg/p32929/fay_fl)]() 
 
-## Getting Started
+## Share
+Sharing with your friends is just one click away from here
 
-This project is a starting point for a Flutter application.
+[![facebook](https://image.flaticon.com/icons/png/32/124/124010.png)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/p32929/fay_fl)
+[![twitter](https://image.flaticon.com/icons/png/32/124/124021.png)](https://twitter.com/intent/tweet?source=https://github.com/p32929/fay_fl)
+[![tumblr](https://image.flaticon.com/icons/png/32/124/124012.png)](https://www.tumblr.com/share?v=3&u=https://github.com/p32929/fay_fl)
+[![pocket](https://image.flaticon.com/icons/png/32/732/732238.png)](https://getpocket.com/save?url=https://github.com/p32929/fay_fl)
+[![pinterest](https://image.flaticon.com/icons/png/32/124/124039.png)](https://pinterest.com/pin/create/button/?url=https://github.com/p32929/fay_fl)
+[![reddit](https://image.flaticon.com/icons/png/32/2111/2111589.png)](https://www.reddit.com/submit?url=https://github.com/p32929/fay_fl)
+[![linkedin](https://image.flaticon.com/icons/png/32/1409/1409945.png)](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/p32929/fay_fl)
+[![whatsapp](https://image.flaticon.com/icons/png/32/733/733585.png)](https://api.whatsapp.com/send?text=https://github.com/p32929/fay_fl)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Support
+If you like my works and want to support me/my works, feel free to support or donate. My payment details can be found here: https://p32929.github.io/SendMoney2Me/
