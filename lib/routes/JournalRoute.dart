@@ -25,7 +25,7 @@ class JournalRoute {
 
             GlobalMethods.showAlertDialog(
               "Success",
-              "JSON saved",
+              "List saved as JSON",
             );
           },
         ),

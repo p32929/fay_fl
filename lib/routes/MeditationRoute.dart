@@ -28,7 +28,7 @@ class MeditationRoute {
 
             GlobalMethods.showAlertDialog(
               "Success",
-              "JSON saved",
+              "List saved as JSON",
             );
           },
         ),
